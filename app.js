@@ -1,7 +1,7 @@
 var App = {
-  start: function(space) {
+  start: function() {
     var self = this;
-    this.space = space;
+    this.space = "57623dac7b8b37f4220f10fe";
 
     Semanticle.init();
 
@@ -63,7 +63,7 @@ var App = {
     var container = document.getElementById("card-placeholder");
     var codeContainer = document.getElementById("card-layout-code");
     var value = event.target.value;
-    var cardId = "574b1100b7e212d33bf4b8fd";
+    var cardId = "57623e177b8b37f4220f1101";
     var settings = {
       cardLayout: value
     };
@@ -90,7 +90,7 @@ var App = {
       + settingString
       + ", document.getElementById(\"card-placeholder\");";
 
-    Semanticle.card("574b1100b7e212d33bf4b8fd", settings, container);
+    Semanticle.card("57623e177b8b37f4220f1101", settings, container);
   },
 
   displayCard: function() {
@@ -103,7 +103,7 @@ var App = {
       cardGalleryProportionHorizontal: 16,
       cardGalleryProportionVertical: 9
     };
-    Semanticle.card("574b1100b7e212d33bf4b8fd", settings, container);
+    Semanticle.card("57623e177b8b37f4220f1101", settings, container);
     return false;
   },
 
