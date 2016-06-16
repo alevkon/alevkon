@@ -3,7 +3,11 @@ var App = {
     var self = this;
     this.space = "57623dac7b8b37f4220f10fe";
 
-    Semanticle.init();
+    Semanticle.init({}, function() {
+      self.selectCardLayout({
+        target: document.getElementById("layoutSelector")
+      });
+    });
 
     //if (window.ymaps) {
     //  window.ymaps.ready(() => self.renderYmaps())
