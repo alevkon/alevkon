@@ -1,1 +1,127 @@
-<h1>Hello world</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profi + Semanticle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="http://semanticle.com/semanticle.css" />
+
+  <link rel="stylesheet" href="profi.css" />
+
+</head>
+
+<body>
+
+<div class="regionapp">
+  <nav class="navbar navbar-default">
+    <div class="collapse navbar-collapse">
+      <div class="container-fluid">
+        <h1 class="regionapp__title">RegionApp</h1>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <p>
+          Profi.ru + Semanticle integration demo
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="regionapp__demo gray">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6 regionapp__demo__intro">
+          <h2>Карточки</h2>
+          <p>
+            Основные инструменты Semanticle – это статьи и карточки. Карточка – это автоматически выделенная
+            из статьи информация. Содержит заголовок, картинку и описание. Карточку можно вставить на любую веб-страницу, а клик по
+            ней откроет саму статью с полной информацией.
+          </p>
+
+          <h3>Пример отображения карточки</h3>
+          <p>
+            Это код для вставки карточки на клиентской стороне.
+            Выбирая тип макета, вы управляете отображением карточки.
+          </p>
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="layoutSelector">Тип макета <code>cardLayout</code> </label>
+              <select id="layoutSelector" class="form-control" onchange="App.selectCardLayout(event)">
+                <option value="mini">Mini</option>
+                <option value="side" >Side</option>
+                <option value="top">Top</option>
+                <option value="inside" selected>Inside</option>
+              </select>
+            </div>
+          </form>
+          <pre class="regionapp__demo__code" id="card-layout-code">
+Semanticle.card("57623e177b8b37f4220f1101", {
+  "cardLayout": "side",
+  "cardSideGalleryHeight": 142
+}, document.getElementById("card-placeholder"));
+          </pre>
+          <div id="card-placeholder" class="placeholder">
+            <sm onclick="App.onCardClick('<%= demoCard.id %>')">
+              <%- demoCard.html %>
+            </sm>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="regionapp__demo">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6 regionapp__demo__intro">
+          <h2>Группы карточек</h2>
+          <p>
+            Semanticle умеет фильтровать карточки по тегам и категориям. Полученный результат можно
+            вставить на страницу в виде карточек, открыть в модальном окне или получить в виде JSON для дальнейшей обработки.
+          </p>
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="filterSelector">Фильтр карточек</label>
+              <select id="filterSelector" class="form-control" onchange="App.filterSelect(event)">
+                <option value='{"category":"люди"}' selected>Категория "Люди"</option>
+                <option value='{"category":"места"}' >Категория "Места"</option>
+                <option value='{"tag":"кафе"}'>Тег "Кафе"</option>
+                <option value='{"tag":"культура"}'>Тег "Культура"</option>
+              </select>
+            </div>
+          </form>
+          <pre class="regionapp__demo__code" id="filter-code">
+  Semanticle.find({
+    "category":"врачи",
+    "space":"57623dac7b8b37f4220f10fe",
+    "skip":0,
+    "limit":5
+  }, {}, function(result) {
+    console.log(result);
+  }
+          </pre>
+          <button class="btn btn-primary" onclick="return App.filterRender()">Получить HTML и отобразить</button>
+          <button class="btn btn-success" onclick="return App.filterOpen()">Открыть в окне</button>
+          <button class="btn btn-warning" onclick="return App.filterJSON()">Прлучить JSON</button>
+
+          <div id="filter-placeholder" class="placeholder">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="http://semanticle.com/semanticle.js"></script>
+<!--<script type="text/javascript" src="<%- semanticleHost %>/semanticle.js"></script>-->
+<script type="text/javascript" src="app.js"></script>
+
+<script>
+  App.start("57623dac7b8b37f4220f10fe");
+</script>
+</body>
+</html>
